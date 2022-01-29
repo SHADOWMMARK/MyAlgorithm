@@ -1,0 +1,46 @@
+438. Find All Anagrams in a String
+First I think up this:
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        m,n = len(s),len(p)
+        ans = []
+        def isAnagram(s,p):
+            s=list(s)
+            p=list(p)
+            for item in p:
+                if item in s:
+                    s.remove(item)
+            return not s
+        for i in range(m-n+1):
+            if isAnagram(s[i:i+n],p):
+                ans.append(i)
+        return ans
+        
+The idea is go over the whole s to match. And if it does match append it to ans.
+But this function gives me the runtime too long.
+And I add two pointer to check the incoming element with the previous element if they are the same, it matches,
+unfortunately， this time the runntime is still too long.
+
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        m,n = len(s),len(p)
+        ans = []
+        def isAnagram(s,p):
+            s=list(s)
+            p=list(p)
+            s.sort()
+            p.sort()
+            return s==p
+        i = 0
+        while i < m-n+1:
+            if isAnagram(s[i:i+n],p):
+                ans.append(i)
+                r = i + n+1
+                l = i-1
+                while l>0 and r<m and s[r]==s[l]:
+                    ans.append(i+1)
+                    i += 1
+                    r += 1
+                    l += 1
+            i += 1
+        return ans
