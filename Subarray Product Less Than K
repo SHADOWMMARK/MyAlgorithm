@@ -1,0 +1,19 @@
+713. Subarray Product Less Than K
+Given an array of integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.
+
+the idea of solving the problem is using the !!!!sliding window!!!!
+using the exmple of k = 100 nums=[10,5,2,6]
+this function add [10] first, [5],[5,10],second, and [2],[2,5],[2,5,10]the last one is bigger than 100 so only plusing 2 satisfied contiguous product.
+
+class Solution:
+    def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
+        if k <= 1: return 0
+        product, l, res = 1, 0, 0
+        for r in range(len(nums)):
+            product *= nums[r]  # product multipule incoming number
+            r += 1  
+            while product >= k:  # if now the product bigger then k, remove the leftmost number
+                product /= nums[l]  
+                l += 1  
+            res += r - l  # everytime we add the number of as right pointer as the first multi's product's number
+        return res
