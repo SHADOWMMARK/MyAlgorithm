@@ -1,0 +1,54 @@
+There is actually a module in BFS, here is my thinking:
+
+First we should have a queue structure.
+then we considering the Boundary conditions.
+Then add the start point into the queue, then renew the "visited".
+
+while queue:
+  get len(queue)
+  for i in range(length):
+    queue.popleft #get the first point in the queue
+    is the point reach the end?
+    then get all next level points
+    throwing all not satisfied points away (such as out of boundary or visited)
+    then put the new points into queue
+ 
+
+
+Given an n x n binary matrix grid, return the length of the shortest clear path in the matrix. If there is no clear path, return -1.
+A clear path in a binary matrix is a path from the top-left cell (i.e., (0, 0)) to the bottom-right cell (i.e., (n - 1, n - 1)) such that:
+All the visited cells of the path are 0.
+All the adjacent cells of the path are 8-directionally connected (i.e., they are different and they share an edge or a corner).
+The length of a clear path is the number of visited cells of this path.
+
+BFS's idea is that all possible answer develope together in all possible directions (in this problem) and the quickest will reach the end using least steps.
+
+from collections import deque
+
+class Solution:
+    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+        if grid[0][0] != 0:
+            return -1
+        length = len(grid)
+        if length == 1:
+            return 1
+        que = deque()
+        visited = {}
+        que.appendleft((0,0))
+        visited[(0,0)] = True
+        ans = 1
+        while que:
+            for _ in range(len(que)):
+                i, j = que.pop()
+                for pos_i, pos_j in [(-1,-1), (-1,0), (-1,1), (0,1), (1,1), (1,0), (1,-1), (0,-1)]:
+                    new_i = i + pos_i
+                    new_j = j + pos_j
+                    if 0 <= new_i < length and 0 <= new_j < length and grid[new_i][new_j] == 0 and not visited.get((new_i, new_j)):
+                        if new_i == length - 1 and new_j == length - 1:
+                            return ans + 1
+                        que.appendleft((new_i, new_j))
+                        visited[(new_i, new_j)] = True
+            ans += 1
+        return -1
+
+    
