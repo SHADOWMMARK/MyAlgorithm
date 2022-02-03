@@ -1,0 +1,15 @@
+there mainly severl ways of go-over in the tree datastructure:
+1. preorder: root -> left -> right
+2. inorder: left -> root -> right
+3. postorder: left -> right -> root
+
+for example: there is a tree like this:
+       1
+     2   3
+   4  5   6
+     7 8
+by different kinds of traversal
+the preorder result: 1 2 4 5 7 8 3 6
+the inorder result: 4 2 7 5 8 1 3 6
+the postorder result: 4 7 8 5 2 6 3 1
+
