@@ -13,3 +13,16 @@ the preorder result: 1 2 4 5 7 8 3 6
 the inorder result: 4 2 7 5 8 1 3 6
 the postorder result: 4 7 8 5 2 6 3 1
 
+this is using recursion to write two kinds of traversal:
+
+ def postorder(root):
+     if root:
+         postorder(root.left)
+         postorder(root.right)
+         temp.append(root.val)
+         
+ def inorder(root):
+     if root:
+         inorder(root.left)
+         temp.append(root.val)
+         inorder(root.right)
