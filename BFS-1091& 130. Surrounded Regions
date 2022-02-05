@@ -51,4 +51,47 @@ class Solution:
             ans += 1
         return -1
 
+
+and another problem:
+130. Surrounded Regions
+Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.
+A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+my idea is find all "special O" that cannot be changed into "X", using the idea of BFS!! first construct a queue that
+containing srounding "O", and all "O" nearby is special as well, then mark these positions then change all other positions' "O" into "X"!!
+
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        dircs = {(-1,0),(1,0),(0,1),(0,-1)}
+        m , n = len(board), len(board[0])
+        special = []
+        visited = [[0]*n for _ in range(m)]
+        for i in range(m):
+            if board[i][0]=="O":
+                special.append((i,0))
+                visited[i][0]=1
+            if board[i][n-1]=="O":
+                special.append((i,n-1))
+                visited[i][n-1]=1
+        for i in range(n):
+            if board[0][i]=="O":
+                special.append((0,i))
+                visited[0][i]=1
+            if board[m-1][i]=="O":
+                special.append((m-1,i))
+                visited[m-1][i]=1
+        while special:
+            i, j = special.pop(0)
+            for k,l in dircs:
+                newi, newj = i + k, j + l
+                if newi>0 and newi <m and newj > 0 and newj < n and board[newi][newj]=="O" and visited[newi][newj]!=1:
+                    visited[newi][newj]=1
+                    special.append((newi,newj))
+        for i in range(m):
+            for j in range(n):
+                if board[i][j]=="O" and visited[i][j]!=1:
+                    board[i][j]="X"
     
