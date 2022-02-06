@@ -36,3 +36,17 @@ class Solution(object):
             if not item in ans:
                 ans.append(item)
         return ans
+#78 using the binary code to define every set:
+for example 0000 for the 1,2,3,4 entries
+0001 stands for only get the 1, 0010 stands for getting the 2 only:
+
+    public static List<List<Integer>> binaryBit(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        for (int i = 0; i < (1 << nums.length); i++) {
+            List<Integer> sub = new ArrayList<Integer>();
+            for (int j = 0; j < nums.length; j++)
+                if (((i >> j) & 1) == 1) sub.add(nums[j]);
+            res.add(sub);
+        }
+        return res;
+    }
