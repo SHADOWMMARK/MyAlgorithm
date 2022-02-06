@@ -2,6 +2,7 @@ there mainly severl ways of go-over in the tree datastructure:
 1. preorder: root -> left -> right
 2. inorder: left -> root -> right
 3. postorder: left -> right -> root
+actually those three methods are belonged to DFS
 
 for example: there is a tree like this:
        1
