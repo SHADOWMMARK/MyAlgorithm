@@ -50,3 +50,10 @@ for example 0000 for the 1,2,3,4 entries
         }
         return res;
     }
+here is a really brilliant code:
+it is not from myself but it is really amazing!!!
+this seems not using the idea of recursion.
+        res = [[]]
+        for item in nums:
+            res = res + [[item]+num for num in res] ##when I understand this line, it really shock me!
+        return res
