@@ -1,6 +1,6 @@
 board=[["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
-
 word = "SEE"
+#using the dfs idea to solve it
 dircs={(-1,0),(1,0),(0,1),(0,-1)}
 l = len(word)
 m=len(board)
