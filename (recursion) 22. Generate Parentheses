@@ -1,0 +1,41 @@
+this is my first type code, since it may need more truncated branches this version spent a lot time,
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        lenth = 2*n
+        k = 1
+        temp="("
+        ans = []
+        def dfs(lenth,temp,k):
+            if len(temp)==2*n and k == 0 and not temp in ans:  #this is a not so right way to avoid duplication
+                ans.append(temp)
+            if k == lenth:
+                dfs(lenth-1,temp+")",k-1)
+            if k == 0:
+                dfs(lenth-1,temp+"(",k+1)
+            for i in range(2):
+                if k<0:
+                    break
+                if k>lenth:
+                    break
+                if i==0 and k<lenth:
+                    dfs(lenth-1,temp+"(",k+1)
+                elif i==1 and k>0:
+                    dfs(lenth-1,temp+")",k-1)
+        dfs(lenth,temp,k)
+        return ans
+the more reasonable way to make it efficient is not to let it turn into the useless branch that causing duplication:
+
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        ans = []
+        def dfs(paths, left, right):
+            if left > n or right > left: return
+            if len(paths) == n * 2:  # then we can add a restriction : there must be pair "()" which means it cannot only being a ) on the left.
+                res.append(paths)
+                return
+            dfs(paths + '(', left + 1, right)  
+            dfs(paths + ')', left, right + 1)
+        dfs('', 0, 0)
+        return res
+
+
