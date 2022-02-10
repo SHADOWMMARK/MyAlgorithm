@@ -20,7 +20,41 @@ for i in range(m):
     for j in range(n):
         if word[0] == board[i][j]:
             q=(i,j)
-            dfs(1,q)
+            dfs(1,q)    
+            
+            
+but the code above cannot be used in leet code but it runs all right in VS:
+then I add the mark matrix it is similar with the visited matrix that remember if the entry is visited or not:
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+       
+        def exi(k:int,q):
+            tempi,tempj = q
+            if k==l:
+                return True
+            for i,j in dircs:
+                ni, nj = tempi+i , tempj+j
+                if ni>=0 and ni<m and nj>=0 and nj<n and k<l and board[ni][nj]==word[k]:
+                    if  mark[ni][nj] == 1: continue
+                    mark[ni][nj] = 1
+                    if exi(k+1,(ni,nj))== True:
+                        return True
+                    else:
+                        mark[ni][nj] = 0
+            return False
+        dircs={(-1,0),(1,0),(0,1),(0,-1)}
+        l = len(word)
+        m=len(board)
+        n=len(board[0])
+        mark = [[0 for _ in range(n)] for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                if word[0] == board[i][j]:
+                    mark[i][j] = 1
+                    if exi(1,(i,j))==True: return True
+                    else: mark[i][j] = 0
+        return False
+      #now it runs fast and properly!
     
 
 
