@@ -27,3 +27,30 @@ class Solution:
         for i in range(2,n):
             dp[i]=max(dp[i-1],dp[i-2]+nums[i])
         return dp[n-1]
+        
+And the other version of this problem:213. House Robber II:
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle.
+That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+the solution is just to discuss two conditions: rob the first one or not. because there is a connection between the first and the last, so we cannot rob them both.
+class Solution(object):
+    def rob(self, nums):
+        n = len(nums)
+        if n == 0:
+          return 0
+        if n <= 2:
+          return max(nums)
+        # not to rob the first one
+        dp1 = [0] * n
+        dp1[0] = 0
+        dp1[1] = nums[1]
+        for i in range(2, n):
+          dp1[i] = max(dp1[i-1],nums[i] + dp1[i-2])
+
+        # not to rob the last one
+        dp2 = [0] * n
+        dp2[0] = nums[0]
+        dp2[1] = max(nums[0],nums[1])
+        for i in range(2, n-1):
+          dp2[i] = max(dp2[i-1],nums[i] + dp2[i-2])
+        return max(dp1[n-1],dp2[n-2])
