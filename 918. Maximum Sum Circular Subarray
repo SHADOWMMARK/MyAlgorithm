@@ -1,0 +1,32 @@
+Prob state:
+Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
+A circular array means the end of the array connects to the beginning of the array. Formally,
+the next element of nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n].
+A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i],
+nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n.
+
+Understand:
+The most important problem in this is that the largest sum of a circular array equals the total sum of the array - least sum of the array:
+how to understand? Here is an example: [1,-5,6,-7], the[-5,6] is a sub sequence of the array, so does the [-7,1] because it is circular;
+now the array can be two parts: two subsequence, so when we want to get the max sum subsequence just use the sum of total - sum of least subsequence.
+Next we should discuss if the max sum sub is in the middle of the it is like the prob 53. if it is seperated at two ends of the array, just use the situation we discuss.
+and there are two situations that is special, when all the entries are > 0 or < 0:
+
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        i=0
+        if not any(map(lambda x: x < 0, nums)):
+            return sum(nums)
+        if all(map(lambda x: x < 0, nums)):
+            return max(nums)
+        n = len(nums)
+        dp = [0] * n
+        mdp = [0] * n
+        dp[0] = nums[0]
+        mdp[0] = nums[0]
+        for i in range(1, n):
+            dp[i] = max(dp[i-1] + nums[i], nums[i])
+            mdp[i] = min(mdp[i-1] + nums[i], nums[i])
+        return max(max(dp),sum(nums)-min(mdp))
+        
+it is not difficult to tell this is a just some trans from prob. 53.
