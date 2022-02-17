@@ -94,3 +94,32 @@ class Solution:
             k += numsap[i]
             i += 1
         return dp[n-1]
+
+
+2/17 HERE IS SOME IMPORTANT IDEA about the dynamic programming:
+It is about the aftereffect, the dp method always requiring none aftereffect.
+Below is an example:
+53. Maximum Subarray:
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+A subarray is a contiguous part of an array.
+#First I thought about the sliding windows but the time is run out. Then we considering these kind of problem, it tell us to return the sum, but not exact the list,
+which gives us more probability of this being a dp problem and notice that this is not subsequence but it is the max continuous sublist sum.
+here is the example list nums =  [-2,1,-3,4,-1,2,1,-5,4]
+the core idea is to set the dp problem to many small subproblem, but if we set the dp[1] as the problem that the max list sum containing nums[1] we got plenty probability:
+[-2,1,-3,4] 1 is the second of the sublist and it can be the first entry of the sublist, so it is hard to get the sub prob done.
+Then we change the sub prob: the max continuous sublist sum as nums[i] as the last entry of the sublist, this problem we do not need to consider the entries after the element,
+so the solutions to those sub prob such as dp[0] = -2, dp[1]=max(dp[0]+nums[1],nums[1])
+
+#attention: we got here the dp[n-1] is not the best ans, but the max(dp) which is the max of all subprob is the ans.
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        dp = [0] * len(nums)
+        dp[0] = nums[0]
+
+        for i in range(1, len(nums)):
+            dp[i] = max(dp[i-1] + nums[i], nums[i]) #状态转移公式
+
+        return max(dp)
