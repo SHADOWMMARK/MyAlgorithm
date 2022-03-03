@@ -1,0 +1,31 @@
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+My point is that if the tree is symmetric, then it means we use the right or left order of going over(no matter the post or other way), will return the same array.
+
+Here is my solution:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        templ,tempr = [],[]
+        def postRorder(root):
+            if root:
+                postRorder(root.left)
+                postRorder(root.right)
+                templ.append(root.val)
+            else:
+                templ.append("-")
+        def postLorder(root):
+            if root:
+                postLorder(root.right)
+                postLorder(root.left)
+                tempr.append(root.val)
+            else:
+                tempr.append("-")
+        postRorder(root)
+        postLorder(root)
+        return templ==tempr
