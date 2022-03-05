@@ -27,3 +27,10 @@ this is using recursion to write two kinds of traversal:
          inorder(root.left)
          temp.append(root.val)
          inorder(root.right)
+         
+def preorder(root):
+     if root:
+         inorder(root.right)
+         inorder(root.left)
+         temp.append(root.val)
+         
