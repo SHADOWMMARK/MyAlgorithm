@@ -1,0 +1,32 @@
+#this solution idea is to check the colum sum, row sum and the digits in the 3*3 list one by one
+
+import numpy as np
+def solution(grid):
+    def checkCount(matrix):
+        check = [0]*10
+        for i in range(3):
+            for j in range(3):
+                check[matrix[i][j]]+=1
+                if check[matrix[i][j]]!=1:
+                    return False
+        return True
+    m = len(grid)
+    n = len(grid[0])
+    for i in range(m):
+        if sum(grid[i])!=45:
+            return False        
+    for j in range(n):
+        s = 0
+        for i in range(m):
+            s+=grid[i][j]
+        if s!=45:
+            return False
+    arr = np.array(grid)
+    sp=np.split(arr,3)       
+    for i in range(3):
+        temp=np.hsplit(sp[i],3)
+        for j in range(3):
+            if not checkCount(temp[j]):
+                return False
+   
+    return True
