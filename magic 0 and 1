@@ -1,0 +1,12 @@
+python notation:a|b means the a and b or by bit:
+example a =100 b= 001 a|b=101
+
+Presented with the integer n,
+find the 0-based position of the second rightmost zero bit in its binary representation
+(it is guaranteed that such a bit exists), counting from right to left.
+
+def solution(n):
+    return ((n+1|n)+1|n)-n
+    
+not so clear why doing this,
+wait explaination later.
