@@ -1,6 +1,6 @@
 python notation:a|b means the a and b or by bit:
 example a =100 b= 001 a|b=101
-
+#
 Presented with the integer n,
 find the 0-based position of the second rightmost zero bit in its binary representation
 (it is guaranteed that such a bit exists), counting from right to left.
@@ -10,3 +10,21 @@ def solution(n):
     
 not so clear why doing this,
 wait explaination later.
+
+0xAAAAAAAA is a 32 bit number with all even bits set as 1 and all odd bits as 0 (1010)*8
+0x55555555 = (0101)*8
+
+#Swap Adjacent Bits
+You're given an arbitrary 32-bit integer n.
+Take its binary representation, split bits into it in pairs (bit number 0 and 1, bit number 2 and 3, etc.)
+and swap bits in each pair. Then return the result as a decimal number.
+
+def solution(n):
+    return (((n & 0xAAAAAAAA) >> 1) | ((n & 0x55555555) << 1))
+    
+tips!
+    !!find the first 1 in a right-most bit (in binary representation):!!
+    m&(-m)
+    exampe: m = 10 in binary =1010
+    then -m = ~m + 1 which ~m is 0101
+    then -m = 0110 --> m&(-m) = 1010 & 0110 = 0010 (only left the rightmost 1) 
