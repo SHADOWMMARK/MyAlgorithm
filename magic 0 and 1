@@ -28,3 +28,5 @@ tips!
     exampe: m = 10 in binary =1010
     then -m = ~m + 1 which ~m is 0101
     then -m = 0110 --> m&(-m) = 1010 & 0110 = 0010 (only left the rightmost 1) 
+    
+~means get reverse as bit: example: m = 101011 ~m=010100
