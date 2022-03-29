@@ -1,0 +1,13 @@
+##206-reverseLinkedList
+
+
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        pre = None
+        cur = head
+        while cur:
+            temp = cur.next   # STORE THE PREVIOUS "cur.next"
+            cur.next = pre
+            pre = cur
+            cur = temp
+        return pre
