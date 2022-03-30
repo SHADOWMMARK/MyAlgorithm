@@ -1,0 +1,49 @@
+##You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+First solution is very simple but kind of NOT as describing,
+it is simple just to copy the rows into the columns.
+#CODE
+class Solution:
+    import numpy as np
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        ans = []
+        m,n = len(matrix),len(matrix[0])
+        for j in range(n):
+            temp = []
+            for i in range(m):
+                temp.append(matrix[i][j])
+            ans.append(temp[::-1])
+        matrix[:] = ans                     ##important if here use matrix = ans will not work
+
+
+Second method is using the flippings to do the rotate job!
+by doing up-down filp then do the flip by the main diagonal.
+for example: the matrix  
+  1 2 3
+  4 5 6 
+  7 8 9
+becomes:
+7 8 9
+4 5 6
+1 2 3
+then becomes；
+7 4 1
+8 5 2
+9 6 3
+which is exactly the same thing we have doing the rotate job:
+#CODE
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        n = len(matrix)
+        # up-side-down
+        for i in range(n // 2):
+            for j in range(n):
+                matrix[i][j], matrix[n - i - 1][j] = matrix[n - i - 1][j], matrix[i][j]
+        # flip by main diagonal
+        for i in range(n):
+            for j in range(i):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
