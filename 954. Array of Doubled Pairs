@@ -1,0 +1,10 @@
+Given an integer array of even length arr, return true if it is possible
+to reorder arr such that arr[2 * i + 1] = 2 * arr[2 * i] for every 0 <= i < len(arr) / 2, or false otherwise.
+
+2 <= arr.length <= 3 * 104
+arr.length is even.
+-105 <= arr[i] <= 105
+
+#understand:
+to get (n/2) numbers of pairs of (x, 2*x) 
+
