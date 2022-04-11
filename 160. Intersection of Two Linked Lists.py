@@ -39,3 +39,6 @@ class Solution:
    #  2. a!=b but we notice a + c + b = b + c + a, which is saying that after the pointer A (B) reach the end of a (b) then we put it at the head of b (a) 
    # then they will also meet at the first overlapped node.
     # the second situation is that if they do not overlap then A != B always holds.
+
+    
+# problem No.142 is also similar with this, it can also use the hashtable to get rid easily, and  can also use low and fast pointer to get rid of problems.
