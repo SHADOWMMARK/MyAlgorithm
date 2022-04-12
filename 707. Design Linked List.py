@@ -20,3 +20,51 @@
   # void deleteAtIndex(int index) Delete the indexth node in the linked list, if the index is valid.
   
 #first is Single linkedlist relization:
+class ListNode:                         # first should build a ListNode class
+    def __init__(self,x):
+        self.val = x
+        self.next = None
+
+class MyLinkedList:
+
+    def __init__(self):                 # need a var that record the total length of the linkedlist
+        self.size = 0
+        self.head = ListNode(0)         # a "fake" head built
+
+
+    def get(self, index: int) -> int:
+        if index<0 or index>=self.size:return -1
+        cur = self.head
+        for _ in range(index+1):
+            cur = cur.next
+        return cur.val
+
+
+    def addAtHead(self, val: int) -> None:
+        self.addAtIndex(0,val)
+
+    def addAtTail(self, val: int) -> None:
+        self.addAtIndex(self.size,val)
+
+
+    def addAtIndex(self, index: int, val: int) -> None:
+        if index>self.size:
+            return 
+        if index<0: index = 0
+        self.size += 1
+        pre = self.head
+        for _ in range(index):
+            pre = pre.next
+        temp = ListNode(val)
+        temp.next = pre.next
+        pre.next = temp
+
+    def deleteAtIndex(self, index: int) -> None:
+        if index>=self.size or index<0:
+            return 
+        self.size -= 1
+        pre = self.head
+        for _ in range(index):
+            pre = pre.next
+        pre.next = pre.next.next
+        
