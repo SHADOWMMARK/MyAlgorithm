@@ -15,7 +15,7 @@ def lexicalOrder(self, n: int) -> List[int]:
         dfs(num)
     return ans  
 
-#this idea is also using dfs but not in a recursive way (offical solution)
+#this idea is also using dfs but not in a recursive way (offical solution), but the result saying this method runs far more fast than the first one(with far fewer space)
 class Solution:
     def lexicalOrder(self, n: int) -> List[int]:
         ans = [0] * n
