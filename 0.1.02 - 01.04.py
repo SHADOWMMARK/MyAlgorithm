@@ -28,3 +28,27 @@ def replaceSpaces(self, S: str, length: int) -> str:
             k -= 1
         else: break
     return ans
+
+
+#01.04. Palindrome Permutation LCCI
+"""Given a string, write a function to check if it is a permutation of a palindrome. 
+A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. 
+The palindrome does not need to be limited to just dictionary words.
+
+idea is using the hash talbe(dict) to count occurancy of each letter in the string if the odd number is more than 1 then it cannot form a palindrome
+"""
+
+def canPermutePalindrome(self, s: str) -> bool:
+    odd = 0
+    dic = {}
+    for i in range(len(s)):
+        if not s[i] in dic:
+            dic[s[i]] = 1
+        else:
+            dic[s[i]]+=1
+    for key in dic:
+        if dic[key] % 2 != 0 :
+            odd += 1
+        if odd > 1:
+            return False
+    return True
