@@ -37,7 +37,6 @@ The palindrome does not need to be limited to just dictionary words.
 
 idea is using the hash talbe(dict) to count occurancy of each letter in the string if the odd number is more than 1 then it cannot form a palindrome
 """
-
 def canPermutePalindrome(self, s: str) -> bool:
     odd = 0
     dic = {}
@@ -52,3 +51,31 @@ def canPermutePalindrome(self, s: str) -> bool:
         if odd > 1:
             return False
     return True
+
+# 01.05. One Away LCCI
+"""
+There are three types of edits that can be performed on strings: 
+insert a character, remove a character, or replace a character. 
+Given two strings, write a function to check if they are one edit (or zero edits) away.
+"""
+def oneEditAway(self, first, second):
+    """
+    :type first: str
+    :type second: str
+    :rtype: bool
+    """
+    l1 = len(first)
+    l2 = len(second)
+    if l1>l2: 
+        s1 = first 
+        s2 = second
+    else:
+        s1 = second
+        s2 = first
+    k = len(s2)
+    for i in range(0,len(s2)):
+        if s1[i] != s2[i]:
+            k = i 
+            break
+
+    return s1[k+1:]==s2[k:] or s1[k+1:]==s2[k+1:]
