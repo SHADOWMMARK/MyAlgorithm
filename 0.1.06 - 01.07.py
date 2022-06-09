@@ -42,4 +42,25 @@ def compressString1(self, S: str) -> str:
     res = ''.join(res)
     return res if len(res) < ls else S
 
+"""
+ 01.07. Rotate Matrix LCCI
+Given an image represented by an N x N matrix, where each pixel in the image is 4 bytes, 
+write a method to rotate the image by 90 degrees.
+Can you do this in place?
+idea is using two flip to instead roatating
+"""
+def rotate(self, matrix: List[List[int]]) -> None:
+    """
+    Do not return anything, modify matrix in-place instead.
+    """
+    n = len(matrix)
+    k = n//2
+    for j in range(n):              #flip over the midle line 
+        for i in range(k):
+            matrix[j][i],matrix[j][-i-1] = matrix[j][-i-1],matrix[j][i]
+    for i in range(n-1):            #flip over the x=y line 
+        t = n-i-1
+        for j in range(t):
+            matrix[i][j],matrix[n-j-1][n-i-1] = matrix[n-j-1][n-i-1],matrix[i][j]
+
 
