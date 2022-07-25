@@ -13,3 +13,5 @@ print(collections.__all__)
 
   def intersect(self, nums1, nums2):
       return list((collections.Counter(nums1) & collections.Counter(nums2)).elements())
+  #to sort the counter as the second's number disascending order
+  cc=sorted(c.items(),key=lambda x:x[1],reverse=True)
