@@ -29,3 +29,12 @@ class Solution:
         postRorder(root)
         postLorder(root)
         return templ==tempr
+        
+ ##similar prob:       226. Invert Binary Tree
+        
+def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    if root:
+        root.right,root.left = root.left,root.right
+        self.invertTree(root.right)
+        self.invertTree(root.left)
+    return root
