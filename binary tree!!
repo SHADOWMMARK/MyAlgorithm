@@ -30,7 +30,7 @@ this is using recursion to write two kinds of traversal:
          
 def preorder(root):
      if root:
-         inorder(root.right)
-         inorder(root.left)
+         preorder(root.right)
+         preorder(root.left)
          temp.append(root.val)
          
