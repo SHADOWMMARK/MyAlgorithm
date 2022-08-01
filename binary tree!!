@@ -34,3 +34,18 @@ def preorder(root):
          preorder(root.left)
          temp.append(root.val)
          
+Binary Search Tree: left-son-node is always smaller than father-node, and right-son-node is always larger than the father-node.
+
+
+##Convert a sorted array into an Binary Search Tree:
+def sortedArrayToBST(nums: List[int]) -> Optional[TreeNode]:        
+        if not nums:
+            return None
+
+        mid = len(nums)//2
+        root = TreeNode(val=nums[mid]
+
+        root.left = self.sortedArrayToBST(nums[:mid])
+        root.right = self.sortedArrayToBST(nums[mid+1:])
+
+        return root
