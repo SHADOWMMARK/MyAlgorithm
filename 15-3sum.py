@@ -7,8 +7,8 @@ class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         ans = []
-        if not nums or len(nums)<3:
-            return ans
+#         if not nums or len(nums)<3:       #according to describe this can be saved
+#             return ans
         for i in range(len(nums)):
             if nums[i] > 0: break   #when the smallest of three bigger than 0 the sum must not = 0
             if i>0 and nums[i-1]==nums[i]:continue  #when the smallest is the same as the last one the finding will be the same
