@@ -94,4 +94,57 @@ class Solution:
             for j in range(n):
                 if board[i][j]=="O" and visited[i][j]!=1:
                     board[i][j]="X"
-    
+                    
+                    
+ #200. Number of Islands
+ class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        m,n = len(grid),len(grid[0])
+        visited = [[0]*n for _ in range(m)]
+        ans = 0
+        dirs = {(1,0),(0,1),(-1,0),(0,-1)}
+        for i in range(m):
+            for j in range(n):
+                if visited[i][j]==1:
+                    continue
+                if grid[i][j]!="1":
+                    visited[i][j]=1
+                else:
+                    que = [(i,j)]
+                    while que:
+                        oldi,oldj = que.pop()
+                        visited[oldi][oldj]=1
+                        for ai,aj in dirs:
+                            ni,nj = oldi+ai,oldj+aj
+                            if 0<=ni<m and 0<=nj<n and visited[ni][nj]!=1 and grid[ni][nj]=="1":
+                                visited[ni][nj]=1
+                                que.append((ni,nj))
+                    ans+=1
+                                
+        return ans
+        
+        
+ #547. Number of Provinces, comparing with the #200 can use only one dimension to recorde the "visited"
+#Runtime: 184 ms, faster than 98.72% of Python3 online submissions for Number of Provinces.
+#Memory Usage: 14.1 MB, less than 96.43% of Python3 online submissions for Number of Provinces.
+ class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        m = len(isConnected)
+        visited = [0]*m 
+        ans = 0
+        for i in range(m):
+            if visited[i]==1:
+                continue
+            visited[i]=1
+            temp = [i]
+            while temp:
+                ct = temp.pop()
+                for j in range(m):
+                    if j==ct:
+                        continue
+                    elif isConnected[ct][j] == 1 and visited[j]!=1:
+                        temp.append(j)
+                        visited[j]=1
+            ans+=1
+        return ans
+ 
