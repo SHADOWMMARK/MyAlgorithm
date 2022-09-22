@@ -1,0 +1,10 @@
+#BASIC:
+SELECT column_name,column_name
+FROM table_name
+WHERE column_name operator value;
+
+#LIKE:
+SELECT *
+FROM table1
+WHERE conditions LIKE "m%";
+# this will output table1's all row that the conditions start with "m"
