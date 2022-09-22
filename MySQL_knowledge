@@ -8,3 +8,9 @@ SELECT *
 FROM table1
 WHERE conditions LIKE "m%";
 # this will output table1's all row that the conditions start with "m"
+
+#full outer join in MySQL:
+(join the Employees and Salaries tables)
+  (SELECT * FROM Employees LEFT JOIN Salaries USING(employee_id)
+   UNION 
+   SELECT * FROM Employees RIGHT JOIN Salaries USING(employee_id))
