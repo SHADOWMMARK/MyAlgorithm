@@ -40,3 +40,14 @@ print(collections.__all__)
   List 2: [4, 5, 6]
   Result: [5, 7, 9]
   Note: the syntax of map() in Python is map(function, iterables)
+
+#map(),filter(),functools.reduce():
+
+  Syntax: map(func, *iterables)
+● func is a function on which each element in iterables may be applied on
+● * means there can be as many iterables as possible, where func has that exact number as required input arguments
+
+  Syntax: filter(func, iterable)
+● The func argument is required to return a boolean value
+● Only one iterable is required
+● filter passes each element in the iterable through func and returns only the ones that evaluate to true.
