@@ -51,3 +51,10 @@ print(collections.__all__)
 ● The func argument is required to return a boolean value
 ● Only one iterable is required
 ● filter passes each element in the iterable through func and returns only the ones that evaluate to true.
+
+  Syntax: reduce(func, iterable[,initial])
+● reduce applies a function of two arguments cumulatively to the elements of an iterable, optionally starting with an initial argument
+● func is the function on which each element in the iterable gets cumulatively applied to
+○ func requires two arguments
+● initial is the optional value that gets placed before the elements of the iterable in the calculation, and serves as a default when the iterable is empty
+○ If initial is supplied, it becomes the first argument to func and the first element in iterable becomes the second element
