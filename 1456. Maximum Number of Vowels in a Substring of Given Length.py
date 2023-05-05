@@ -21,4 +21,3 @@ def maxVowels(s: str, k: int) -> int:
         r+=1
         ans = max(ans,temp)
     return ans
-print(maxVowels(s,3))
