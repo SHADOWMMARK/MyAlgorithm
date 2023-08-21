@@ -20,6 +20,7 @@ class Solution:
                 l += 1
             ans = min(r-l+1,ans)
         return ans
+    
     def minSubArrayLen(self, target: int, nums) -> int:
         if t>sum(nums):
             return 0
