@@ -1,6 +1,6 @@
-#finding two numbers' gcd #Greatest common divisor
-
 def gcd(a, b):
+    #finding two numbers' gcd 
+    #Greatest common divisor
     while b:
         a, b = b, a%b
     return a
