@@ -36,3 +36,7 @@ def max_pooling(input_feature_map, kernel_size=2, stride=2):
             pooled_feature_map[i, j] = np.max(input_feature_map[row_start:row_end, col_start:col_end])
 
     return pooled_feature_map
+
+'''
+actually here the problem is let the stride = 1 and kernel_size = 3
+'''
