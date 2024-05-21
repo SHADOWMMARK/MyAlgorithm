@@ -1,4 +1,4 @@
-90's version is built on 78's, only getting rid of the duplicated one.
+# 90's version is built on 78's, only getting rid of the duplicated one.
 #78
 class Solution(object):
     def subsets(self, nums):
@@ -37,9 +37,9 @@ class Solution(object):
                 ans.append(item)
         return ans
 #78 using the binary code to define every set:
-for example 0000 for the 1,2,3,4 entries
-0001 stands for only get the 1, 0010 stands for getting the 2 only:
-
+# for example 0000 for the 1,2,3,4 entries
+# 0001 stands for only get the 1, 0010 stands for getting the 2 only:
+'''
     public static List<List<Integer>> binaryBit(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         for (int i = 0; i < (1 << nums.length); i++) {
@@ -57,3 +57,5 @@ this seems not using the idea of recursion.
         for item in nums:
             res = res + [[item]+num for num in res] ##when I understand this line, it really shock me!
         return res
+
+'''
