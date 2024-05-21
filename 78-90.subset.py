@@ -14,9 +14,14 @@ class Solution(object):
                 helper(j + 1,tmp + [nums[j]] )
         helper(0, [])
         return res
-        
+    def subsets2(self, nums):
+        ans = [[]]
+        for num in nums:
+            ans += [item + [num] for item in ans]
+        return ans
+    
 #90
-class Solution(object):
+class Solution90(object):
     def subsetsWithDup(self, nums):
 
         """
@@ -59,3 +64,5 @@ this seems not using the idea of recursion.
         return res
 
 '''
+newClass = Solution()
+print(newClass.subsets2([1,2,3]))
