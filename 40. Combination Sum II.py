@@ -21,4 +21,3 @@ def combination2(candidates:list[int],target:int) -> list[list[int]]:
                 break
             st.append((i+1,sum+candidates[i],path+[candidates[i]]))
     return res
-print(combination2([10,1,2,7,6,1,5],8)) # [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]
