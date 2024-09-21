@@ -30,3 +30,9 @@ class Solution:
                 num += 1
         return ans
 
+#this idea is using python's inbuilt function sorted, but the time complexity is O(nlogn)
+
+    def lexicalOrder(self, n: int) -> List[int]:
+        ans = [str(i) for i in range(1,n+1)]
+        ans.sort()
+        return [int(i) for i in ans]
